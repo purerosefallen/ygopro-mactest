@@ -64,10 +64,12 @@ script:
     fi
   fi
 - cd ../ygopro-svrelease
-- rm -rf mac
-- mkdir mac
 - git config --global user.name Smile-DK
 - git config --global user.email 2236141431@qq.com
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf linux; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm -rf mac; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir linux; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir mac; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cp -rf ../ygopro/ygopro mac; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -rf ../ygopro/ygopro.app mac; fi
 - git add . -A
