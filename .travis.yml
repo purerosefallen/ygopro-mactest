@@ -24,8 +24,7 @@ addons:
     - libglu-dev
 before_install:
 - git clone https://github.com/moecube/ygopro
-- git clone https://
-github.com/Smile-DK/ygopro-svrelease
+- git clone https://github.com/Smile-DK/ygopro-svrelease
 - git clone --branch=local https://github.com/purerosefallen/ygopro-222DIY
 - cp -rf ygopro-222DIY/ocgcore ygopro
 - cp -rf ygopro-222DIY/gframe/single_duel.cpp ygopro/gframe
