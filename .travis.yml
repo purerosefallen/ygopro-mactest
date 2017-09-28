@@ -69,7 +69,7 @@ script:
 - git config --global user.name Smile-DK
 - git config --global user.email 2236141431@qq.com
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cp -rf ../ygopro/ygopro mac; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -rf ../ygopro/ygopro mac; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -rf ../ygopro/ygopro.app mac; fi
 - git add . -A
 - git commit -m "Build by Travis"
 - git push $SMILE/Smile-DK/ygopro-svrelease master
