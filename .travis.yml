@@ -74,5 +74,5 @@ script:
 - git add . -A
 - git commit -m "Build by Travis in $TRAVIS_OS_NAME"
 - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
-  git push $SMILE/Smile-DK/ygopro-svrelease master;
-fi
+    git push $SMILE/Smile-DK/ygopro-svrelease master;
+  fi
