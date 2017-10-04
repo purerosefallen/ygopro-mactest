@@ -73,10 +73,6 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -rf ../ygopro/ygopro.app mac; fi
 - git add . -A
 - git commit -m "Build by Travis in $TRAVIS_OS_NAME"
-- git push $SMILE/Smile-DK/ygopro-svrelease master
-
-branches:
-  only:
-  - master
-  - /\d+\..+/
-
+if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+  git push $SMILE/Smile-DK/ygopro-svrelease master;
+fi
