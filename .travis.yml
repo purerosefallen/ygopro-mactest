@@ -63,16 +63,16 @@ script:
     fi
   fi
 - cd ../ygopro-svrelease
-- git config --global user.name Smile-DK
-- git config --global user.email 2236141431@qq.com
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf linux; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm -rf mac; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir linux; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir mac; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cp -rf ../ygopro/ygopro linux; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -rf ../ygopro/ygopro.app mac; fi
-- git add . -A
-- git commit -m "Build by Travis in $TRAVIS_OS_NAME"
 - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+    git config --global user.name Smile-DK;
+    git config --global user.email 2236141431@qq.com;
+    git add . -A;
+    git commit -m "Build by Travis in $TRAVIS_OS_NAME";
     git push $SMILE/Smile-DK/ygopro-svrelease master;
   fi
