@@ -11,7 +11,7 @@ before_install:
 - brew update
 - brew install freetype libevent sqlite lua dylibbundler
 
-- curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-macosx.tar.gz | tar zfx - > /dev/null
+- curl --location --retry 5 https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-macosx.tar.gz | tar zfx -
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip
 
 - unzip -q irrlicht-1.8.4.zip 
