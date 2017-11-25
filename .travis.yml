@@ -51,7 +51,7 @@ script:
 - security import cert.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
 - codesign --deep --keychain build.keychain --sign "$(security find-identity -v -p codesigning build.keychain | head -1 | grep -o '".*"' | tr -d '"')" ygopro.app
 
-- zip -q ../ygopro-koishi.zip ygopro.app
+- zip -q -r -S ../ygopro-koishi.zip ygopro.app
 - cd ..
 
 deploy:
