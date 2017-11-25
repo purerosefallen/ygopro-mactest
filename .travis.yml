@@ -37,20 +37,19 @@ script:
 - make config=release ygopro
 - cd ..
 
-- mkdir -p ygopro.app/Contents/MacOS;
-- mv bin/release/ygopro ygopro.app/Contents/MacOS;
-- dylibbundler -x ygopro.app/Contents/MacOS/ygopro -b -d ygopro.app/Contents/Frameworks/ -p @executable_path/../Frameworks/ -cd;
-- strip ygopro.app/Contents/MacOS/ygopro; mkdir ygopro.app/Contents/Resources;
-- mv premake/gframe/ygopro.icns ygopro.app/Contents/Resources/Icon.icns;
-- defaults write "$PWD/ygopro.app/Contents/Info.plist" "CFBundleIconFile" "Icon.icns";
-- defaults write "$PWD/ygopro.app/Contents/Info.plist" "CFBundleIdentifier" "moe.mycard.ygopro";
+- mkdir -p ygopro.app/Contents/MacOS
+- mv bin/release/ygopro ygopro.app/Contents/MacOS
+- dylibbundler -x ygopro.app/Contents/MacOS/ygopro -b -d ygopro.app/Contents/Frameworks/ -p @executable_path/../Frameworks/ -cd
+- strip ygopro.app/Contents/MacOS/ygopro; mkdir ygopro.app/Contents/Resources
+- mv premake/gframe/ygopro.icns ygopro.app/Contents/Resources/Icon.icns
+- defaults write "$PWD/ygopro.app/Contents/Info.plist" "CFBundleIconFile" "Icon.icns"
+- defaults write "$PWD/ygopro.app/Contents/Info.plist" "CFBundleIdentifier" "moe.mycard.ygopro"
 
-- echo $CERTIFICATE | base64 --decode --output cert.p12;
+- echo $CERTIFICATE | base64 --decode --output cert.p12
 - security create-keychain -p "" build.keychain
 - security unlock-keychain -p "" build.keychain
 - security import cert.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-- codesign --deep --keychain build.keychain --sign "$(security find-identity -v -p
-- codesigning build.keychain | head -1 | grep -o '".*"' | tr -d '"')" ygopro.app
+- codesign --deep --keychain build.keychain --sign "$(security find-identity -v -p codesigning build.keychain | head -1 | grep -o '".*"' | tr -d '"')" ygopro.app
 
 - zip -q ../ygopro-koishi.zip ygopro.app ikpMP3.dylib libirrklang.dylib
 
