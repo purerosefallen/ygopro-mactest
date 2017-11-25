@@ -28,6 +28,7 @@ before_install:
 - unzip -q irrKlang-32bit-1.5.0.zip
 - mv -f irrKlang-1.5.0 irrKlang
 - find irrKlang -name *.a | xargs -I {} cp -rf {} /usr/local/lib/
+- cp -rf irrKlang/bin/macosx-gcc/*.dylib /usr/local/lib/
 - cp -rf irrKlang/bin/macosx-gcc/ikpMP3.dylib .
 - cp -rf irrKlang/bin/macosx-gcc/libirrklang.dylib .
 
