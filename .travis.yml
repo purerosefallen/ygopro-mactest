@@ -4,19 +4,19 @@ sudo: required
 dist: trusty
 osx_image: xcode8
 before_install:
-- curl --location --retry 5 https://github.com/purerosefallen/ygopro-222DIY/archive/local.zip
+- curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/purerosefallen/ygopro-222DIY/archive/local.zip
 - unzip -q ygopro-222DIY-local.zip
 - mv -f ygopro-222DIY-local ygopro
 - cd ygopro
 - brew update
 - brew install freetype libevent sqlite lua dylibbundler
 
-- curl --location --retry 5 https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-macosx.tar.gz | tar zfx - > /dev/null
+- curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-macosx.tar.gz | tar zfx - > /dev/null
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip
 
 - unzip -q irrlicht-1.8.4.zip 
 - cd irrlicht-1.8.4/
-- curl --location --retry 5 https://github.com/moecube/ygopro/raw/master/premake/irrlicht/irrlicht-mac.patch
+- curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/moecube/ygopro/raw/master/premake/irrlicht/irrlicht-mac.patch
 - patch -p1 < irrlicht-mac.patch 
 - cd source/Irrlicht/MacOSX/ 
 - xcodebuild -project MacOSX.xcodeproj 
@@ -24,7 +24,7 @@ before_install:
 - cp -rf ../../../include /usr/local/include/irrlicht 
 - cd ../../../../
 
-- curl --location --retry 5 http://www.ambiera.at/downloads/irrKlang-32bit-1.5.0.zip
+- curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name http://www.ambiera.at/downloads/irrKlang-32bit-1.5.0.zip
 - unzip -q irrKlang-32bit-1.5.0.zip
 - cp -rf irrKlang-1.5.0/bin/macosx-gcc/* /usr/local/lib/
 - cp -rf irrKlang-1.5.0/bin/macosx-gcc/ikpMP3.dylib .
