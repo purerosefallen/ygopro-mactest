@@ -8,8 +8,8 @@ before_install:
 - unzip -q ygopro-222DIY-local.zip
 - mv -f ygopro-222DIY-local ygopro
 - cd ygopro
-- brew update
-- brew install freetype libevent sqlite lua dylibbundler
+- brew update > /dev/null
+- brew install freetype libevent sqlite lua dylibbundler > /dev/null
 
 - curl --location --retry 5 https://github.com/premake/premake-core/releases/download/v5.0.0-alpha12/premake-5.0.0-alpha12-macosx.tar.gz | tar zfx -
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip
@@ -19,7 +19,7 @@ before_install:
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/moecube/ygopro/raw/master/premake/irrlicht/irrlicht-mac.patch
 - patch -p1 < irrlicht-mac.patch 
 - cd source/Irrlicht/MacOSX/ 
-- xcodebuild -project MacOSX.xcodeproj 
+- xcodebuild -project MacOSX.xcodeproj > /dev/null
 - cp build/Release/libIrrlicht.a /usr/local/lib/ 
 - cp -rf ../../../include /usr/local/include/irrlicht 
 - cd ../../../../
