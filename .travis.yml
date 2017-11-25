@@ -52,6 +52,7 @@ script:
 - codesign --deep --keychain build.keychain --sign "$(security find-identity -v -p codesigning build.keychain | head -1 | grep -o '".*"' | tr -d '"')" ygopro.app
 
 - zip -q ../ygopro-koishi.zip ygopro.app
+- cd ..
 
 deploy:
   provider: releases
