@@ -8,13 +8,12 @@ before_install:
 - curl --retry 5 --connect-timeout 30 --location --remote-header-name --remote-name https://github.com/moecube/ygopro/archive/master.zip
 - unzip -q ygopro-222DIY-local.zip
 - unzip -q ygopro-master.zip
-- mv -f ygopro-222DIY-local ygopro
+- cp -rf ygopro-222DIY-local/* .
 - rm -rf ygopro-master/premake/gframe
-- cp -rf ygopro-master/premake ygopro
-- cp -rf ygopro-master/gframe/*.lua ygopro/gframe
-- cp -rf ygopro-master/*.lua ygopro
+- cp -rf ygopro-master/premake .
+- cp -rf ygopro-master/gframe/*.lua gframe
+- cp -rf ygopro-master/*.lua .
 
-- cd ygopro
 - brew update > /dev/null
 - brew install freetype libevent sqlite lua dylibbundler > /dev/null
 
@@ -51,8 +50,7 @@ script:
 - security import cert.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
 - codesign --deep --keychain build.keychain --sign "$(security find-identity -v -p codesigning build.keychain | head -1 | grep -o '".*"' | tr -d '"')" ygopro.app
 
-- zip -q -r ../ygopro-koishi-mac.zip ygopro.app
-- cd ..
+- zip -q -r ygopro-koishi-mac.zip ygopro.app
 
 deploy:
   provider: releases
